@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment7</title>
+    <%= stylesheet_link_tag 'application',
+    	media: 'all', 'data-turbolinks-track' => true %>
+
+    <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+  	<% if logged_in? %>
+  		<div style='float: right;'>
+  			You are logged in as <%= current_user.login %> |
+  			<%= link_to "Logout", logout_path, data: {method: :delete} %> |
+  			<a href="/accounts/" + current_user.id + "/edit">Edit Account</a>
+  		</div>
+  	<% end %>
+
+  	<% flash.each do |key, value| %>
+  		<%= content_tag :p, value, id: key %>
+  	<% end %>
+    <%= yield %>
+  </body>
+</html>

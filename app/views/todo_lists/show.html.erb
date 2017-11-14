@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>List name:</strong>
+  <%= @todo_list.list_name %>
+</p>
+
+<p>
+  <strong>List due date:</strong>
+  <%= @todo_list.list_due_date %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task Title</th>
+      <th>Task Description</th>
+      <th>Due Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_items.each do |todo_item| %>
+      <tr class="<%= todo_item.done? ? 'done' : 'not_done' %>">
+        <td><%= link_to todo_item.task_title, todo_item %></td>
+        <td><%= todo_item.due_date %></td>
+        <td><%= link_to 'Destroy', todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<table>
+
+<p />
+<%= will_paginate @todo_items %>
+<br />
+
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'New TodoItem', new_todo_item_path %> |
+<%= link_to 'Back', todo_lists_path %>

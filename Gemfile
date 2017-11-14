@@ -10,13 +10,8 @@ gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'will_paginate', '~> 3.0'
 
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'sqlite3', group: :development
 
-group :production do
-  gem 'pg'
-end
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -46,6 +41,11 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development do

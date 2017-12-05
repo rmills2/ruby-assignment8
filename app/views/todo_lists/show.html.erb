@@ -26,6 +26,7 @@
         <td><%= link_to todo_item.task_title, todo_item %></td>
         <td><%= todo_item.due_date %></td>
         <td><%= link_to 'Destroy', todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= link_to todo_item.done? ? '' : 'Mark Complete', todo_item, method: :mark_complete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>

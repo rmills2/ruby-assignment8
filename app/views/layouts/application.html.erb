@@ -3,11 +3,12 @@
   <head>
     <title>Assignment7</title>
     <%= stylesheet_link_tag 'application',
-    	media: 'all', 'data-turbolinks-track' => true %>
+    	media: 'all' %>
+    <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/le-frog/jquery-ui.css' %>
 
     <%= csrf_meta_tags %>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -24,4 +25,5 @@
   	<% end %>
     <%= yield %>
   </body>
+
 </html>

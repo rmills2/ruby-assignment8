@@ -10,6 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
 //= require_tree .
+
+$(function(){
+  $("#notice").fadeOut(5000);
+
+  $("#date_in").datepicker({dateFormat: "yy-mm-dd"});
+
+});

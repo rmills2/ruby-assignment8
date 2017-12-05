@@ -34,6 +34,7 @@ class TodoItemsController < ApplicationController
       if @todo_item.save
         format.html { redirect_to @todo_item, notice: 'Todo item was successfully created.' }
         format.json { render :show, status: :created, location: @todo_item }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @todo_item.errors, status: :unprocessable_entity }
@@ -62,6 +63,18 @@ class TodoItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to todo_items_url, notice: 'Todo item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /todo_items/1
+  # POST /todo_items/1.json
+  def mark_complete
+    ti = TodoItem.find(params[:todo_item_id])
+    ti.update_attribute(:done, true)
+    @todo_list = TodoList.find(ti.todo_list_id)
+    respond_to do |format|
+      format.html { redirect_to @todo_list, notice: 'Todo item was successfully updated.' }
+      format.json { render :show, status: :ok, location: @todo_list }
     end
   end
 

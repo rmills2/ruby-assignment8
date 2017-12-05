@@ -869,3 +869,492 @@
   [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-12 19:48:55.455713', '2017-11-12 19:48:55.455713', 298486374)[0m
   [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (20.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "accounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "gender" varchar, "age" integer, "first_name" varchar, "last_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "account_id" integer, "user_id" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "todo_lists"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "todo_lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list_name" varchar, "list_due_date" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer, "todoItems_id" integer, "todoItem_id" integer)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_todo_lists_on_todoItem_id" ON "todo_lists" ("todoItem_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_todo_lists_on_todoItem_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_todo_lists_on_todoItem_id' AND type='index'
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX "index_todo_lists_on_todoItems_id" ON "todo_lists" ("todoItems_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_todo_lists_on_todoItems_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_todo_lists_on_todoItems_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_todo_lists_on_todoItem_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_todo_lists_on_todoItem_id' AND type='index'
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX "index_todo_lists_on_user_id" ON "todo_lists" ("user_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171112230901)[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171106230346),
+(20171106230406),
+(20171106230423),
+(20171106230449),
+(20171106230500),
+(20171106231306),
+(20171106231923),
+(20171106232012),
+(20171106232028),
+(20171112213017),
+(20171112213223),
+(20171112213316),
+(20171112214458),
+(20171112214538),
+(20171112224832);
+
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-11-26 21:49:39.833982"], ["updated_at", "2017-11-26 21:49:39.833982"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:40.257754', '2017-11-26 21:49:40.257754', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:40.257754', '2017-11-26 21:49:40.257754', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:40.262366', '2017-11-26 21:49:40.262366', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:40.262366', '2017-11-26 21:49:40.262366', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (6.5ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.000778', '2017-11-26 21:49:41.000778', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.000778', '2017-11-26 21:49:41.000778', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.010204', '2017-11-26 21:49:41.010204', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.010204', '2017-11-26 21:49:41.010204', 298486374)[0m
+  [1m[35m (91.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.113593', '2017-11-26 21:49:41.113593', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.113593', '2017-11-26 21:49:41.113593', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.115868', '2017-11-26 21:49:41.115868', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.115868', '2017-11-26 21:49:41.115868', 298486374)[0m
+  [1m[35m (95.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.239446', '2017-11-26 21:49:41.239446', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.239446', '2017-11-26 21:49:41.239446', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.242763', '2017-11-26 21:49:41.242763', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.242763', '2017-11-26 21:49:41.242763', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.249796', '2017-11-26 21:49:41.249796', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.249796', '2017-11-26 21:49:41.249796', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.251373', '2017-11-26 21:49:41.251373', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.251373', '2017-11-26 21:49:41.251373', 298486374)[0m
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.263213', '2017-11-26 21:49:41.263213', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.263213', '2017-11-26 21:49:41.263213', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.271354', '2017-11-26 21:49:41.271354', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.271354', '2017-11-26 21:49:41.271354', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.280132', '2017-11-26 21:49:41.280132', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.280132', '2017-11-26 21:49:41.280132', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.282005', '2017-11-26 21:49:41.282005', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.282005', '2017-11-26 21:49:41.282005', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.288546', '2017-11-26 21:49:41.288546', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.288546', '2017-11-26 21:49:41.288546', 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.290797', '2017-11-26 21:49:41.290797', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.290797', '2017-11-26 21:49:41.290797', 298486374)[0m
+  [1m[35m (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.299411', '2017-11-26 21:49:41.299411', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.299411', '2017-11-26 21:49:41.299411', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.301007', '2017-11-26 21:49:41.301007', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.301007', '2017-11-26 21:49:41.301007', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.312979', '2017-11-26 21:49:41.312979', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.312979', '2017-11-26 21:49:41.312979', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.316506', '2017-11-26 21:49:41.316506', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.316506', '2017-11-26 21:49:41.316506', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.323043', '2017-11-26 21:49:41.323043', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.323043', '2017-11-26 21:49:41.323043', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.326255', '2017-11-26 21:49:41.326255', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.326255', '2017-11-26 21:49:41.326255', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.336956', '2017-11-26 21:49:41.336956', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.336956', '2017-11-26 21:49:41.336956', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.339077', '2017-11-26 21:49:41.339077', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.339077', '2017-11-26 21:49:41.339077', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.346668', '2017-11-26 21:49:41.346668', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.346668', '2017-11-26 21:49:41.346668', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.348395', '2017-11-26 21:49:41.348395', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.348395', '2017-11-26 21:49:41.348395', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.361012', '2017-11-26 21:49:41.361012', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.361012', '2017-11-26 21:49:41.361012', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.362868', '2017-11-26 21:49:41.362868', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.362868', '2017-11-26 21:49:41.362868', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.370736', '2017-11-26 21:49:41.370736', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.370736', '2017-11-26 21:49:41.370736', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.374396', '2017-11-26 21:49:41.374396', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.374396', '2017-11-26 21:49:41.374396', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.382495', '2017-11-26 21:49:41.382495', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.382495', '2017-11-26 21:49:41.382495', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.385103', '2017-11-26 21:49:41.385103', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.385103', '2017-11-26 21:49:41.385103', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (30.5ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.397439', '2017-11-26 21:49:41.397439', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.397439', '2017-11-26 21:49:41.397439', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.430804', '2017-11-26 21:49:41.430804', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.430804', '2017-11-26 21:49:41.430804', 298486374)[0m
+  [1m[35m (82.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.529448', '2017-11-26 21:49:41.529448', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.529448', '2017-11-26 21:49:41.529448', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.531558', '2017-11-26 21:49:41.531558', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.531558', '2017-11-26 21:49:41.531558', 298486374)[0m
+  [1m[35m (24.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.568165', '2017-11-26 21:49:41.568165', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.568165', '2017-11-26 21:49:41.568165', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.570625', '2017-11-26 21:49:41.570625', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.570625', '2017-11-26 21:49:41.570625', 298486374)[0m
+  [1m[35m (10.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.593111', '2017-11-26 21:49:41.593111', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.593111', '2017-11-26 21:49:41.593111', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.595766', '2017-11-26 21:49:41.595766', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.595766', '2017-11-26 21:49:41.595766', 298486374)[0m
+  [1m[35m (11.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.6ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (27.4ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.617887', '2017-11-26 21:49:41.617887', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.617887', '2017-11-26 21:49:41.617887', 298486374)[0m
+  [1m[36mFixture Delete (34.3ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.648518', '2017-11-26 21:49:41.648518', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.648518', '2017-11-26 21:49:41.648518', 298486374)[0m
+  [1m[35m (6.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.703744', '2017-11-26 21:49:41.703744', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.703744', '2017-11-26 21:49:41.703744', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.705401', '2017-11-26 21:49:41.705401', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.705401', '2017-11-26 21:49:41.705401', 298486374)[0m
+  [1m[35m (13.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.729914', '2017-11-26 21:49:41.729914', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.729914', '2017-11-26 21:49:41.729914', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.733489', '2017-11-26 21:49:41.733489', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.733489', '2017-11-26 21:49:41.733489', 298486374)[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.743685', '2017-11-26 21:49:41.743685', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.743685', '2017-11-26 21:49:41.743685', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.745591', '2017-11-26 21:49:41.745591', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.745591', '2017-11-26 21:49:41.745591', 298486374)[0m
+  [1m[35m (7.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.761122', '2017-11-26 21:49:41.761122', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.761122', '2017-11-26 21:49:41.761122', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.764132', '2017-11-26 21:49:41.764132', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.764132', '2017-11-26 21:49:41.764132', 298486374)[0m
+  [1m[35m (37.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.816459', '2017-11-26 21:49:41.816459', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.816459', '2017-11-26 21:49:41.816459', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.818421', '2017-11-26 21:49:41.818421', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.818421', '2017-11-26 21:49:41.818421', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.825357', '2017-11-26 21:49:41.825357', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.825357', '2017-11-26 21:49:41.825357', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.827938', '2017-11-26 21:49:41.827938', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.827938', '2017-11-26 21:49:41.827938', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.835357', '2017-11-26 21:49:41.835357', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.835357', '2017-11-26 21:49:41.835357', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.836960', '2017-11-26 21:49:41.836960', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.836960', '2017-11-26 21:49:41.836960', 298486374)[0m
+  [1m[35m (15.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.863588', '2017-11-26 21:49:41.863588', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.863588', '2017-11-26 21:49:41.863588', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.866347', '2017-11-26 21:49:41.866347', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.866347', '2017-11-26 21:49:41.866347', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.876366', '2017-11-26 21:49:41.876366', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.876366', '2017-11-26 21:49:41.876366', 298486374)[0m
+  [1m[36mFixture Delete (20.3ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.878642', '2017-11-26 21:49:41.878642', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.878642', '2017-11-26 21:49:41.878642', 298486374)[0m
+  [1m[35m (13.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.921518', '2017-11-26 21:49:41.921518', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.921518', '2017-11-26 21:49:41.921518', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.923130', '2017-11-26 21:49:41.923130', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.923130', '2017-11-26 21:49:41.923130', 298486374)[0m
+  [1m[35m (13.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.943617', '2017-11-26 21:49:41.943617', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.943617', '2017-11-26 21:49:41.943617', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.945212', '2017-11-26 21:49:41.945212', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.945212', '2017-11-26 21:49:41.945212', 298486374)[0m
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.959963', '2017-11-26 21:49:41.959963', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.959963', '2017-11-26 21:49:41.959963', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.962231', '2017-11-26 21:49:41.962231', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.962231', '2017-11-26 21:49:41.962231', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.968478', '2017-11-26 21:49:41.968478', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.968478', '2017-11-26 21:49:41.968478', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.970018', '2017-11-26 21:49:41.970018', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.970018', '2017-11-26 21:49:41.970018', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.981023', '2017-11-26 21:49:41.981023', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:41.981023', '2017-11-26 21:49:41.981023', 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.984733', '2017-11-26 21:49:41.984733', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:41.984733', '2017-11-26 21:49:41.984733', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.000746', '2017-11-26 21:49:42.000746', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.000746', '2017-11-26 21:49:42.000746', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.003842', '2017-11-26 21:49:42.003842', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.003842', '2017-11-26 21:49:42.003842', 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.014258', '2017-11-26 21:49:42.014258', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.014258', '2017-11-26 21:49:42.014258', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.017383', '2017-11-26 21:49:42.017383', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.017383', '2017-11-26 21:49:42.017383', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.035746', '2017-11-26 21:49:42.035746', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("gender", "age", "first_name", "last_name", "created_at", "updated_at", "id") VALUES ('MyString', 1, 'MyString', 'MyString', '2017-11-26 21:49:42.035746', '2017-11-26 21:49:42.035746', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tags"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.039008', '2017-11-26 21:49:42.039008', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at", "id") VALUES ('MyString', '2017-11-26 21:49:42.039008', '2017-11-26 21:49:42.039008', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
